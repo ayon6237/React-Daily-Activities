@@ -1,1 +1,65 @@
 
+////////////////////// App.js file ////////////////////////
+import React, { createContext } from 'react'
+import Child1 from './Child1';
+
+const data1 = createContext();
+
+
+const App = () => {
+  const data = ["Ayon ","Shakinul ","Naim"];
+  return (
+    <div>
+      <data1.Provider value={data}>
+        <Child1/>
+      </data1.Provider>
+    </div>
+  )
+}
+
+export default App
+export {data1};
+
+
+///////////////////// Child1.js file ////////////////////////
+
+import React from 'react'
+import Child2 from './Child2'
+
+const Child1 = () => {
+   
+  return (
+
+    
+    <Child2/>
+  )
+}
+
+export default Child1
+
+///////////////////////////// Child2.js file //////////////////////////////////
+
+import React, { useContext } from 'react'
+
+import {data1} from './App';
+
+const Child2 = () => {
+
+  const item = useContext(data1);
+  const items = item.map((element)=>{
+    return <h2>{element}</h2>
+  })
+  return (
+    <div>
+      <h2>{items}</h2>
+    </div>
+  )
+}
+
+export default Child2
+
+
+
+
+
+
